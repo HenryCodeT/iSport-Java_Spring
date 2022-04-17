@@ -8,7 +8,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title> Titulo </title>
+    <title> Cambiar contraseña </title>
     <!-- Balsamiq -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -20,8 +20,8 @@
 </head>
 <body>
 <!-- //// NAVBAR /////////////////////////////////////////// -->
-<nav class="navbar navbar-expand-lg navbar-light bg-light d-flex justify-content-end p-2 m-2">
-    <a class="navbar-brand flex-grow-1 fs-2" href="/home">Sports</a>
+<nav class="navbar navbar-expand-lg navbar-dark bg-nav d-flex justify-content-end p-2 m-2">
+    <a class="navbar-brand flex-grow-1 fs-2 text-warmgray" href="/home">SportLand</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
@@ -57,18 +57,20 @@
 
 <!-- //// MAIN AREA //////////////////////////////////////// -->
 <main role="main" class="mx-auto w-50">
-    <h2 class="text-center"> Cambiar contraseña </h2>
-    <form action="/new/password" method="post">
-        <div class="mb-3 form-group">
-            <label path="oldPassword">Contraseña actual:</label>
-            <input path="oldPassword" class="form-control mb-3" name="oldPassword"/>
+    <h2 class="text-center text-overcast"> Cambiar contraseña </h2>
+    <form:form action="/edit/password" method="post" modelAttribute="passwordUser">
+        <div class="mb-3 form-group text-glacierblue">
+            <form:label path="oldPassword">Contraseña actual:</form:label>
+            <form:input path="oldPassword" class="form-control mb-3"  />
+            <form:errors path="oldPassword" class="text-danger mb-3 d-inline-block" />
         </div>
-        <div class="mb-3 form-group">
-            <label path="password">Nueva Contraseña:</label>
-            <input path="password" class="form-control mb-3" name="newPassword"/>
+        <div class="mb-3 form-group text-glacierblue">
+            <form:label path="password">Nueva Contraseña:</form:label>
+            <form:input path="password" class="form-control mb-3"  />
+            <form:errors path="password" class="text-danger mb-3 d-inline-block" />
         </div>
         <button class="btn bg-glacierblue text-center" type="submit">Editar</button>
-    <form>
+    </form:form>
 </main>
 
 <!-- jQuery (No necesario en Bootstrap 5) -->

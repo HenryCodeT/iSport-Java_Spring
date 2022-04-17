@@ -27,6 +27,9 @@ public class MessageController {
 
     @PostMapping("/create-message")
     public String newMessage(@Valid @ModelAttribute("message") Message message, BindingResult result, HttpSession session, Model model){
+        if (session.isNew() || session.getAttribute("user_id") == null) {
+            return "redirect:/login";
+        }
         System.out.println("*********** POST MESSAGE **********");
         System.out.println("message content: "+message.getContent());
         System.out.println("message user: "+message.getAuthor());

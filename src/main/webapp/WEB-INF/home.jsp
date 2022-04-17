@@ -8,7 +8,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title> Titulo </title>
+    <title> Home </title>
     <!-- Balsamiq -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -20,8 +20,8 @@
 </head>
 <body>
 <!-- //// NAVBAR /////////////////////////////////////////// -->
-<nav class="navbar navbar-expand-lg navbar-light bg-light d-flex justify-content-end p-2 m-2">
-    <a class="navbar-brand flex-grow-1 fs-2" href="/home">Sports</a>
+<nav class="navbar navbar-expand-lg navbar-dark bg-nav d-flex justify-content-end p-2 m-2">
+    <a class="navbar-brand flex-grow-1 fs-2 text-warmgray" href="/home">SportLand</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -60,13 +60,13 @@
 <main role="main">
     <div class="container mt-4">
         <div class="row">
-            <h3>Bienvenido ${ loggedInUser.userName }</h3>
+            <h3 class="text-overcast">Bienvenido ${ loggedInUser.userName }</h3>
         </div>
-        <hr>
-        <h4>Eventos en los que participa</h4>
-        <table class="table table-bordered border-dark w-75 mx-auto">
+        <hr class="bg-ice">
+        <h4 class="text-overcast">Eventos en los que participa</h4>
+        <table class="table table-bordered border-info w-75 mx-auto">
             <thead>
-            <tr class="text-center">
+            <tr class="text-center text-glacierblue">
                 <th scope="col">Nombre de Evento</th>
                 <th scope="col">Lugar</th>
                 <th scope="col">Participantes</th>
@@ -74,16 +74,16 @@
                 <th scope="col">Accion</th>
             </tr>
             </thead>
-            <tbody>
+            <tbody class="text-info">
             <c:forEach var="event" items="${events}">
                 <c:choose>
                     <c:when test="${event.getEventUsers().indexOf(loggedInUser)!= -1 && loggedInUser.getCreatorEvents().indexOf(event)== -1 }">
-                        <tr class="text-center">
-                            <td><a href="/event/${event.getId()}">${event.getEventName()}</a></td>
+                        <tr class="text-center text-overcast">
+                            <td><a class="btn btn-info" href="/event/${event.getId()}">${event.getEventName()}</a></td>
                             <td>${event.getLocationName()}</td>
                             <td>${event.getEventUsers().size()} / ${event.getAttendees()}</td>
                             <td><fmt:formatDate pattern="E dd-MM-yyy hh:mm aaa" value="${event.getEventDate()}"/></td>
-                            <td><a  href="/events/remove/${event.getId()}">No participar</a></td>
+                            <td><a class="btn bg-overcast" href="/events/remove/${event.getId()}">No participar</a></td>
                         </tr>
                     </c:when>
                 </c:choose>
@@ -92,9 +92,9 @@
         </table>
         <hr>
         <h4>Sus eventos creados:</h4>
-        <table class="table table-bordered border-dark w-75 mx-auto">
+        <table class="table table-bordered border-info w-75 mx-auto">
             <thead>
-            <tr class="text-center">
+            <tr class="text-center text-glacierblue">
                 <th scope="col">Nombre de Evento</th>
                 <th scope="col">Lugar</th>
                 <th scope="col">Participantes</th>
@@ -102,10 +102,10 @@
                 <th scope="col">Acciones</th>
             </tr>
             </thead>
-            <tbody>
+            <tbody class="text-info">
             <c:forEach var="event" items="${loggedInUser.getCreatorEvents()}">
-                <tr class="text-center">
-                    <td><a href="/event/${event.getId()}">${event.getEventName()}</a></td>
+                <tr class="text-center text-overcast">
+                    <td><a class="btn btn-info" href="/event/${event.getId()}">${event.getEventName()}</a></td>
                     <td>${event.getLocationName()}</td>
                     <td>${event.getEventUsers().size()} / ${event.getAttendees()}</td>
                     <td><fmt:formatDate pattern="E dd-MM-yyy hh:mm aaa" value="${event.getEventDate()}"/></td>
@@ -122,7 +122,6 @@
         </table>
     </div>
 </main>
-
 
 <!-- jQuery (No necesario en Bootstrap 5) -->
 <script src="/webjars/jquery/jquery.min.js"></script>

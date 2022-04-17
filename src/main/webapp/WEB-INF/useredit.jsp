@@ -8,7 +8,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title> Titulo </title>
+    <title> Editar Perfil </title>
     <!-- Balsamiq -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -20,8 +20,8 @@
 </head>
 <body>
 <!-- //// NAVBAR /////////////////////////////////////////// -->
-<nav class="navbar navbar-expand-lg navbar-light bg-light d-flex justify-content-end p-2 m-2">
-    <a class="navbar-brand flex-grow-1 fs-2" href="/home">Sports</a>
+<nav class="navbar navbar-expand-lg navbar-dark bg-nav d-flex justify-content-end p-2 m-2">
+    <a class="navbar-brand flex-grow-1 fs-2 text-warmgray" href="/home">SportLand</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
@@ -57,28 +57,28 @@
 
 <!-- //// MAIN AREA //////////////////////////////////////// -->
 <main role="main" class="mx-auto w-50">
-    <h2 class="text-center"> Editar Usuario </h2>
-    <form:form action="/register" method="post" modelAttribute="loggedInUser">
-        <div class="mb-3 form-group">
+    <h2 class="text-center text-overcast"> Editar Usuario </h2>
+    <form:form action="/user/edit" method="post" modelAttribute="editUser">
+        <div class="mb-3 form-group text-glacierblue">
             <form:label path="userName">Nombre:</form:label>
             <form:input path="userName" class="form-control mb-3"  />
             <form:errors path="userName" class="text-danger mb-3 d-inline-block" />
         </div>
-        <div class="mb-3 form-group">
+        <div class="mb-3 form-group text-glacierblue">
             <form:label path="userLastName">Apellido:</form:label>
             <form:input path="userLastName" class="form-control mb-3"  />
             <form:errors path="userLastName" class="text-danger mb-3 d-inline-block" />
         </div>
-        <div class="mb-3 form-group">
+        <div class="mb-3 form-group text-glacierblue">
             <form:label path="email">Email:</form:label>
             <form:input path="email" class="form-control mb-3"  />
             <form:errors path="email" class="text-danger mb-3 d-inline-block" />
         </div>
         <div class="mb-3 form-group">
             <form:input path="password" class="form-control mb-3"  type="hidden"/>
-            <form:errors path="password" class="text-danger mb-3 d-inline-block" />
+            <form:input path="confirm" class="form-control mb-3"  type="hidden" value="${editUser.password}"/>
         </div>
-            <form:input path="id" class="form-control mb-3" type="hidden" value="${newUser.getId()}" />
+            <form:input path="id" class="form-control mb-3" type="hidden" value="${editUser.getId()}" />
         <button class="btn bg-glacierblue text-center" type="submit">Editar</button>
     </form:form>
 </main>

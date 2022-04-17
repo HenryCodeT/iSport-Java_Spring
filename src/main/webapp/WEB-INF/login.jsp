@@ -8,7 +8,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Titulo</title>
+    <title>SportLand</title>
     <!-- Balsamiq -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -19,17 +19,17 @@
     <link rel="stylesheet" href="/css/style.css" />
 </head>
 <body>
-<div class="border border-dark p-3 col-5 mx-auto my-5" style="min-width: 390px;">
+<div class="border-form p-3 col-5 mx-auto my-5" style="min-width: 390px;">
     <h1 class="text-glacierblue text-center">Sports</h1>
     <h4 class="text-glacierblue text-center">Buscador y organizador de juegos deportivos gratuitos</h4>
     <h2 class="text-glacierblue text-center">Iniciar sesión</h2>
             <form:form action="/login" method="post" modelAttribute="newLogin">
-                <div class="mb-3 form-group" >
+                <div class="mb-3 form-group text-glacierblue" >
                     <form:label path="email" for="email1">Email:</form:label>
                     <form:input path="email" class="form-control mb-3"  id="email1"/>
                     <form:errors path="email" class="text-danger mb-3 d-inline-block" />
                 </div>
-                <div class="mb-3 form-group">
+                <div class="mb-3 form-group text-glacierblue">
                     <form:label path="password" for="password1">Password:</form:label>
                     <form:input path="password" class="form-control mb-3" id="password1" type="password" />
                     <form:errors path="password" class="text-danger mb-3 d-inline-block" />

@@ -19,32 +19,32 @@
     <link rel="stylesheet" href="/css/style.css" />
 </head>
 <body>
-<div class="border border-dark p-3 col-5 mx-auto my-5" style="min-width: 390px;">
+<div class="p-3 col-5 mx-auto my-5 border-form" style="min-width: 390px;">
     <h1 class="text-glacierblue text-center">Sports</h1>
     <h4 class="text-glacierblue text-center">Buscador y organizador de juegos deportivos gratuitos</h4>
     <h2 class="text-glacierblue text-center">Registro</h2>
     <form:form action="/register" method="post" modelAttribute="newUser">
-        <div class="mb-3 form-group">
+        <div class="mb-3 form-group text-glacierblue">
             <form:label path="userName">Nombre:</form:label>
             <form:input path="userName" class="form-control mb-3"  />
             <form:errors path="userName" class="text-danger mb-3 d-inline-block" />
         </div>
-        <div class="mb-3 form-group">
+        <div class="mb-3 form-group text-glacierblue">
             <form:label path="userLastName">Apellido:</form:label>
             <form:input path="userLastName" class="form-control mb-3"  />
             <form:errors path="userLastName" class="text-danger mb-3 d-inline-block" />
         </div>
-        <div class="mb-3 form-group">
+        <div class="mb-3 form-group text-glacierblue">
             <form:label path="email">Email:</form:label>
             <form:input path="email" class="form-control mb-3"  />
             <form:errors path="email" class="text-danger mb-3 d-inline-block" />
         </div>
-        <div class="mb-3 form-group">
+        <div class="mb-3 form-group text-glacierblue">
             <form:label path="password">Contraseña:</form:label>
             <form:input path="password" class="form-control mb-3" type="password" />
             <form:errors path="password" class="text-danger mb-3 d-inline-block" />
         </div>
-        <div class="mb-3 form-group">
+        <div class="mb-3 form-group text-glacierblue">
             <form:label path="confirm">Confirmar Contraseña:</form:label>
             <form:input path="confirm" class="form-control mb-3" type="password" />
             <form:errors path="confirm" class="text-danger mb-3 d-inline-block" />

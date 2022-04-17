@@ -8,7 +8,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title> Titulo </title>
+    <title> Buscar Evento </title>
     <!-- Balsamiq -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -20,8 +20,8 @@
 </head>
 <body>
 <!-- //// NAVBAR /////////////////////////////////////////// -->
-<nav class="navbar navbar-expand-lg navbar-light bg-light d-flex justify-content-end p-2 m-2">
-    <a class="navbar-brand flex-grow-1 fs-2" href="/home">Sports</a>
+<nav class="navbar navbar-expand-lg navbar-dark bg-nav d-flex justify-content-end p-2 m-2">
+    <a class="navbar-brand flex-grow-1 fs-2 text-warmgray" href="/home">SportLand</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -58,9 +58,10 @@
 
 <!-- //// MAIN AREA //////////////////////////////////////// -->
 <main role="main" class="mx-auto w-75">
-    <table class="table table-bordered border-dark">
+    <h2 class="text-center text-overcast">Buscar un Evento</h2>
+    <table class="table table-bordered border-info">
         <thead>
-        <tr class="text-center">
+        <tr class="text-center text-glacierblue">
             <th scope="col">Nombre de Evento</th>
             <th scope="col">Lugar</th>
             <th scope="col">Participantes</th>
@@ -69,23 +70,23 @@
             <th scope="col">Accion</th>
         </tr>
         </thead>
-        <tbody>
+        <tbody class="text-glacierblue">
             <c:forEach var="event" items="${events}">
                 <c:choose>
                     <c:when test="${event.getEventUsers().indexOf(loggedInUser)== -1}">
                     <tr class="text-center">
-                        <td><a href="/event/${event.getId()}">${event.getEventName()}</a></td>
-                        <td>${event.getLocationName()}</td>
-                        <td>${event.getEventUsers().size()} / ${event.getAttendees()}</td>
-                        <td><fmt:formatDate pattern = "E dd-MM-yyy hh:mm aaa" value = "${event.getEventDate()}" /></td>
-                        <td><a href="/user/${event.getCreator().getId()}">${event.getCreator().getUserName()} ${event.getCreator().getUserLastName()}</a></td>
+                        <td><a class="btn btn-info" href="/event/${event.getId()}">${event.getEventName()}</a></td>
+                        <td class="text-overcast">${event.getLocationName()}</td>
+                        <td class="text-overcast">${event.getEventUsers().size()} / ${event.getAttendees()}</td>
+                        <td class="text-overcast"><fmt:formatDate pattern = "E dd-MM-yyy hh:mm aaa" value = "${event.getEventDate()}" /></td>
+                        <td> <a class="btn bg-overcast" href="/user/${event.getCreator().getId()}">${event.getCreator().getUserName()} ${event.getCreator().getUserLastName()}</a></td>
                         <td>
                             <c:choose>
                                 <c:when test="${event.getEventUsers().size() == event.getAttendees()}">
-                                    <p>Lleno</p>
+                                    <p class="text-light">Lleno</p>
                                 </c:when>
                                 <c:otherwise>
-                                    <a href="/events/add/${event.getId()}">Unirse</a>
+                                    <a class="btn btn-primary" href="/events/add/${event.getId()}">Unirse</a>
                                 </c:otherwise>
                             </c:choose>
                         </td>

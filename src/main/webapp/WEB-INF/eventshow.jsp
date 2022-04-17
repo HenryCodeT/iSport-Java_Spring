@@ -20,8 +20,8 @@
 </head>
 <body>
 <!-- //// NAVBAR /////////////////////////////////////////// -->
-<nav class="navbar navbar-expand-lg navbar-light bg-light d-flex justify-content-end p-2 m-2">
-    <a class="navbar-brand flex-grow-1 fs-2" href="/home">Sports</a>
+<nav class="navbar navbar-expand-lg navbar-dark bg-nav d-flex justify-content-end p-2 m-2">
+    <a class="navbar-brand flex-grow-1 fs-2 text-warmgray" href="/home">SportLand</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -59,78 +59,85 @@
 
 <!-- //// MAIN AREA //////////////////////////////////////// -->
 <main role="main" class="mx-auto w-75">
-    <h3>${event.getEventName()}</h3>
+    <h3 class="text-overcast text-center">${event.getEventName()}</h3>
     <hr>
-    <c:choose>
-        <c:when test="${event.getCreator() != loggedInUser}">
-            <h5>Creador del evento:</h5>
-            <div class="w-75 mx-auto">
-                <h5>
-                    <a href="/user/${event.getCreator().getId()}">${event.getCreator().getUserName()} ${event.getCreator().getUserLastName()}</a>
-                </h5>
+    <div>
+        <div class="d-md-flex">
+            <div class="col-md-4">
+                <c:choose>
+                    <c:when test="${event.getCreator() != loggedInUser}">
+                        <h5 class="text-glacierblue">Creador del evento:</h5>
+                        <div class="w-75 mx-auto">
+                            <h5>
+                                <a class="btn bg-warmgray" href="/user/${event.getCreator().getId()}">${event.getCreator().getUserName()} ${event.getCreator().getUserLastName()}</a>
+                            </h5>
+                        </div>
+                        <hr>
+                    </c:when>
+                </c:choose>
+                <h5 class="text-glacierblue">Fecha y Hora:</h5>
+                <div class="w-75 mx-auto">
+                    <p class="text-overcast"><fmt:formatDate pattern="EEEE dd-MM-yyy" value="${event.getEventDate()}"/></p>
+                    <p class="text-overcast"><fmt:formatDate pattern="hh:mm aaa" value="${event.getEventDate()}"/></p>
+                </div>
             </div>
-            <hr>
-        </c:when>
-    </c:choose>
-    <h5>Fecha y Hora:</h5>
-    <div class="w-75 mx-auto">
-        <p><fmt:formatDate pattern="EEEE dd-MM-yyy" value="${event.getEventDate()}"/></p>
-        <p><fmt:formatDate pattern="hh:mm aaa" value="${event.getEventDate()}"/></p>
-    </div>
-    <hr>
-    <h5>Participantes:</h5>
-    <div class="w-75 mx-auto">
-        <table class="table table-bordered border-dark">
-            <thead>
-            <tr class="text-center">
-                <th scope="col">Nombre y Apellido</th>
-                <th scope="col">Email</th>
-                <th scope="col"># Eventos creados</th>
-                <th scope="col"># Eventos en el que Participa</th>
-            </tr>
-            </thead>
-            <tbody>
-            <c:forEach var="user" items="${event.getEventUsers()}">
-                <tr class="text-center">
-                    <td>${user.getUserName()} ${user.getUserLastName()}</td>
-                    <td>${user.getEmail()}</td>
-                    <td>${user.getCreatorEvents().size()}</td>
-                    <td>${user.getUserEvents().size()}</td>
-                </tr>
-            </c:forEach>
-            </tbody>
-        </table>
-    </div>
-    <hr>
-    <c:choose>
-        <c:when test="${event.getEventUsers().indexOf(loggedInUser)!= -1}">
-            <div class="w-75 mx-auto">
-                <form:form action="/create-message" method="post" modelAttribute="message">
-                    <div class="mb-3 form-group">
-                        <form:label path="content">Dejar un mensaje:</form:label>
-                        <form:input path="content" class="form-control mb-3"/>
-                        <form:errors path="content" class="text-danger mb-3 d-inline-block"/>
+            <div class="border-form col-md-8">
+                <h5 class="text-glacierblue text-center">Mensajes:</h5>
+                <div class="w-75 mx-auto border border-dark border-2 m-2 p-2">
+                    <c:forEach var="message" items="${event.getMessages()}">
+                        <p class="text-glacierblue fs-5">${message.getAuthor().getUserName()}: <span class="text-overcast">${message.getContent()}</span> <span
+                                class="fs-6 text-blue-1"><fmt:formatDate pattern="EEEE dd-MM-yyy hh:mm aaa"
+                                                                           value="${message.getCreatedAt()}"/></span></p>
+                    </c:forEach>
+                    <c:choose>
+                        <c:when test="${event.getEventUsers().indexOf(loggedInUser)!= -1}">
+                            <div class="w-75 mx-auto">
+                                <form:form action="/create-message" method="post" modelAttribute="message">
+                                    <div class="mb-3 form-group">
+                                        <form:label path="content">Dejar un mensaje:</form:label>
+                                        <form:input path="content" class="form-control mb-3"/>
+                                        <form:errors path="content" class="text-danger mb-3 d-inline-block"/>
 
-                        <form:input path="event" class="form-control mb-3" type="hidden" value="${event.getId()}"/>
-                        <form:errors path="event" class="text-danger mb-3 d-inline-block"/>
+                                        <form:input path="event" class="form-control mb-3" type="hidden" value="${event.getId()}"/>
+                                        <form:errors path="event" class="text-danger mb-3 d-inline-block"/>
 
-                        <form:input path="author" class="form-control mb-3" type="hidden"
-                                    value="${loggedInUser.getId()}"/>
-                        <form:errors path="author" class="text-danger mb-3 d-inline-block"/>
-                    </div>
-                    <button class="btn bg-glacierblue text-center" type="submit">mensaje</button>
-                </form:form>
+                                        <form:input path="author" class="form-control mb-3" type="hidden"
+                                                    value="${loggedInUser.getId()}"/>
+                                        <form:errors path="author" class="text-danger mb-3 d-inline-block"/>
+                                    </div>
+                                    <button class="btn bg-glacierblue text-center" type="submit">mensaje</button>
+                                </form:form>
+                            </div>
+                        </c:when>
+                    </c:choose>
+                </div>
             </div>
-        </c:when>
-    </c:choose>
-    <hr>
-    <h5>Mensajes:</h5>
-    <div class="w-75 mx-auto border border-dark border-2 m-2 p-2">
-        <c:forEach var="message" items="${event.getMessages()}">
-            <p>${message.getAuthor().getUserName()}: <br> ${message.getContent()} <span
-                    class="fs-6 text-black-50"><fmt:formatDate pattern="EEEE dd-MM-yyy hh:mm aaa"
-                                                               value="${message.getCreatedAt()}"/></span></p>
-        </c:forEach>
+        </div>
+        <div class="">
+            <h5 class="text-glacierblue">Participantes:</h5>
+            <div class="mx-auto">
+                <table class="table table-bordered border-info">
+                    <thead>
+                    <tr class="text-center text-glacierblue">
+                        <th scope="col">Nombre y Apellido</th>
+                        <th scope="col">Email</th>
+                        <th scope="col"># Eventos creados</th>
+                        <th scope="col"># Eventos en el que Participa</th>
+                    </tr>
+                    </thead>
+                    <tbody class="text-info">
+                    <c:forEach var="user" items="${event.getEventUsers()}">
+                        <tr class="text-center text-overcast">
+                            <td>${user.getUserName()} ${user.getUserLastName()}</td>
+                            <td>${user.getEmail()}</td>
+                            <td>${user.getCreatorEvents().size()}</td>
+                            <td>${user.getUserEvents().size()}</td>
+                        </tr>
+                    </c:forEach>
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </div>
 </main>
 

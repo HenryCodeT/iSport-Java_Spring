@@ -20,7 +20,7 @@
 </head>
 <body>
 <!-- //// NAVBAR /////////////////////////////////////////// -->
-<nav class="navbar navbar-expand-lg navbar-light bg-light d-flex justify-content-end p-2 m-2">
+<nav class="navbar navbar-expand-lg navbar-dark bg-nav d-flex justify-content-end p-2 m-2">
     <a class="navbar-brand flex-grow-1 fs-2" href="/home">Sports</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -56,9 +56,9 @@
 </nav>
 
 <!-- //// MAIN AREA //////////////////////////////////////// -->
-<main role="main" class="mx-auto w-75">
+<main role="main" class="mx-auto w-50">
     <h2 class="text-center"> Editar evento </h2>
-    <form:form action="/create-event" method="post" modelAttribute="newEvent">
+    <form:form class="d-flex row " action="/create-event" method="post" modelAttribute="newEvent">
         <div class="mb-3 form-group">
             <form:label path="eventName">Nombre del Evento:</form:label>
             <form:input path="eventName" class="form-control mb-3"  />
@@ -69,18 +69,18 @@
             <form:input path="locationName" class="form-control mb-3"  />
             <form:errors path="locationName" class="text-danger mb-3 d-inline-block" />
         </div>
-        <div class="mb-3 form-group">
+        <div class="mb-3 col-sm col-md-6 form-group">
             <form:label path="attendees">Asistentes:</form:label>
             <form:input path="attendees" class="form-control mb-3" type="number" />
             <form:errors path="attendees" class="text-danger mb-3 d-inline-block" />
         </div>
-        <div class="mb-3 form-group">
+        <div class="mb-3 col-sm col-md-6 form-group">
             <form:label path="eventDate">Fecha de evento:</form:label>
             <form:input path="eventDate" class="form-control mb-3" type="datetime-local" />
             <form:errors path="eventDate" class="text-danger mb-3 d-inline-block" />
         </div>
             <form:input path="id" class="form-control mb-3" type="hidden" value="${newEvent.getId()}"/>
-        <button class="btn bg-glacierblue text-center" type="submit">Editar</button>
+        <button class="btn bg-glacierblue text-center col-4 mx-auto" type="submit">Editar</button>
     </form:form>
 </main>
 

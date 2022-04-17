@@ -20,8 +20,8 @@
 </head>
 <body>
 <!-- //// NAVBAR /////////////////////////////////////////// -->
-<nav class="navbar navbar-expand-lg navbar-light bg-light d-flex justify-content-end p-2 m-2">
-    <a class="navbar-brand flex-grow-1 fs-2" href="/home">Sports</a>
+<nav class="navbar navbar-expand-lg navbar-dark bg-nav d-flex justify-content-end p-2 m-2">
+    <a class="navbar-brand flex-grow-1 fs-2" href="/home">SportLand</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -60,24 +60,24 @@
 <!-- //// MAIN AREA //////////////////////////////////////// -->
 <main role="main">
     <div class="w-75 mx-auto">
-        <p>Nombre: ${user.getUserName()}</p>
-        <p>Apellido: ${user.getUserLastName()}</p>
-        <p>Email: ${user.getEmail()}</p>
+        <p class="text-glacierblue">Nombre: <span class="text-overcast">${user.getUserName()}</span></p>
+        <p class="text-glacierblue">Apellido: <span class="text-overcast">${user.getUserLastName()}</span></p>
+        <p class="text-glacierblue">Email: <span class="text-overcast">${user.getEmail()}</span></p>
         <hr>
-        <h4>Eventos creados</h4>
-        <table class="table table-bordered border-dark">
+        <h4 class="text-glacierblue">Eventos creados</h4>
+        <table class="table table-bordered border-info">
             <thead>
-            <tr class="text-center">
+            <tr class="text-center text-glacierblue">
                 <th scope="col">Nombre de Evento</th>
                 <th scope="col">Lugar</th>
                 <th scope="col">Participantes</th>
                 <th scope="col">Fecha y Hora</th>
             </tr>
             </thead>
-            <tbody>
+            <tbody class="text-info">
             <c:forEach var="event" items="${user.getCreatorEvents()}">
-                <tr class="text-center">
-                    <td><a href="/event/${event.getId()}">${event.getEventName()}</a></td>
+                <tr class="text-center text-overcast">
+                    <td><a class="btn bg-warmgray" href="/event/${event.getId()}">${event.getEventName()}</a></td>
                     <td>${event.getLocationName()}</td>
                     <td>${event.getEventUsers().size()} / ${event.getAttendees()}</td>
                     <td><fmt:formatDate pattern="E dd-MM-yyy hh:mm aaa" value="${event.getEventDate()}"/></td>
@@ -86,22 +86,22 @@
             </tbody>
         </table>
         <hr>
-        <h4>Eventos en el que participa</h4>
-        <table class="table table-bordered border-dark">
+        <h4 class="text-glacierblue">Eventos en el que participa</h4>
+        <table class="table table-bordered border-info">
             <thead>
-            <tr class="text-center">
+            <tr class="text-center text-glacierblue">
                 <th scope="col">Nombre de Evento</th>
                 <th scope="col">Lugar</th>
                 <th scope="col">Participantes</th>
                 <th scope="col">Fecha y Hora</th>
             </tr>
             </thead>
-            <tbody>
+            <tbody class="text-info">
             <c:forEach var="event" items="${user.getUserEvents()}">
                 <c:choose>
                     <c:when test="${user.getCreatorEvents().indexOf(event) == -1}">
-                        <tr class="text-center">
-                            <td><a href="/event/${event.getId()}">${event.getEventName()}</a></td>
+                        <tr class="text-center text-overcast">
+                            <td><a class="btn bg-warmgray" href="/event/${event.getId()}">${event.getEventName()}</a></td>
                             <td>${event.getLocationName()}</td>
                             <td>${event.getEventUsers().size()} / ${event.getAttendees()}</td>
                             <td><fmt:formatDate pattern="E dd-MM-yyy hh:mm aaa" value="${event.getEventDate()}"/></td>

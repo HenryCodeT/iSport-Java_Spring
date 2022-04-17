@@ -31,7 +31,7 @@ public class EventController {
         System.out.println("value created session: " + session.getAttribute("user_id"));
 
         if (session.isNew() || session.getAttribute("user_id") == null) {
-            return "redirect:/login";
+            return "redirect:/";
         }
         User loggedInUser = userService.retrieveUser((Long) session.getAttribute("user_id"));
         model.addAttribute("loggedInUser", loggedInUser);
@@ -44,6 +44,9 @@ public class EventController {
                                   HttpSession session){
         System.out.println("**************** POST EVENT ****************");
         System.out.println("value created session: " + session.getAttribute("user_id"));
+        if (session.isNew() || session.getAttribute("user_id") == null) {
+            return "redirect:/login";
+        }
         if (result.hasErrors()) {
             return "eventcreate";
         }
@@ -63,7 +66,9 @@ public class EventController {
     // ---------- view ---------------
     @GetMapping("/search-event")
     public String seachEventView( Model model, HttpSession session){
-
+        if (session.isNew() || session.getAttribute("user_id") == null) {
+            return "redirect:/login";
+        }
         User loggedInUser = userService.retrieveUser((Long) session.getAttribute("user_id"));
         model.addAttribute("loggedInUser", loggedInUser);
 
@@ -75,7 +80,9 @@ public class EventController {
     // ------- add user to event---------
     @GetMapping("/events/add/{id}")
     public String addUserToEvent(@PathVariable("id") Long eventId, HttpSession session ){
-
+        if (session.isNew() || session.getAttribute("user_id") == null) {
+            return "redirect:/login";
+        }
         User loggedInUser = userService.retrieveUser((Long) session.getAttribute("user_id"));
         Event event = eventService.findServiceById(eventId);
 
@@ -89,7 +96,9 @@ public class EventController {
     // ---------- view ---------------
     @GetMapping("/event/{id}")
     public String showEvent(@PathVariable("id") Long eventId, @ModelAttribute("message") Message message, HttpSession session, Model model){
-
+        if (session.isNew() || session.getAttribute("user_id") == null) {
+            return "redirect:/login";
+        }
         User loggedInUser = userService.retrieveUser((Long) session.getAttribute("user_id"));
         Event event = eventService.findServiceById(eventId);
 
@@ -103,7 +112,9 @@ public class EventController {
     // ---------- view ---------------
     @GetMapping("/event/edit/{id}")
     public String showEvent(@PathVariable("id") Long eventId, HttpSession session, Model model){
-
+        if (session.isNew() || session.getAttribute("user_id") == null) {
+            return "redirect:/login";
+        }
         User loggedInUser = userService.retrieveUser((Long) session.getAttribute("user_id"));
         Event event = eventService.findServiceById(eventId);
 
@@ -117,6 +128,9 @@ public class EventController {
     // ---------- view ------------------------
     @GetMapping("/events/remove/{id}")
     public String removeUserFromEvent(@PathVariable("id") Long eventId, HttpSession session ){
+        if (session.isNew() || session.getAttribute("user_id") == null) {
+            return "redirect:/login";
+        }
         System.out.println("************ REMOVE USER FROM EVENTS ************");
         User loggedInUser = userService.retrieveUser((Long) session.getAttribute("user_id"));
         Event event = eventService.findServiceById(eventId);
@@ -131,7 +145,10 @@ public class EventController {
     // ///////////////////////////////
     // ---------- view ---------------
     @DeleteMapping("/event/delete/{id}")
-    public String deleteEvent(@PathVariable("id") Long eventId){
+    public String deleteEvent(@PathVariable("id") Long eventId, HttpSession session){
+        if (session.isNew() || session.getAttribute("user_id") == null) {
+            return "redirect:/login";
+        }
         System.out.println("********** DELETE EVENT *********** ");
         System.out.println("EVENTO ID: "+eventId);
         Event event = eventService.findServiceById(eventId);
