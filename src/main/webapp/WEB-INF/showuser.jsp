@@ -48,9 +48,6 @@
                         <li><a class="dropdown-item" href="/user/edit/password">cambiar contraseña</a></li>
                     </ul>
                 </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link " href="/logout">Cerrar sesion</a>
-                </li>
             </ul>
         </form>
     </div>
