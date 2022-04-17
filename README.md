@@ -10,7 +10,8 @@
 * Bootstrap
 * MySQL
 * Bcrypt
-### Esctructura de la base de datos (Modelo visual del esquema, el cual se genera automáticamente una vez creada el nombre de la base de datos y los modelos en nuestra aplicación)
+### Esctructura de la base de datos 
+##### Modelo visual del esquema, el cual se genera automáticamente una vez creada el esquema en la base de datos y los modelos en nuestra aplicación
 ![alt ERD_diagram](https://github.com/HenryCodeT/iSport-Java_Spring/blob/main/assets/diagrama_ERD_SportLand.png)
 ### Dependencias
 ```xml
