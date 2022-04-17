@@ -90,7 +90,7 @@
         </dependency>
 ```
 ### Aplication Properties
-``` xml
+``` 
 # MySQL Access
 # ** Create the schema in mysql ** 
 spring.datasource.url=jdbc:mysql://localhost:3306/spring_schema
