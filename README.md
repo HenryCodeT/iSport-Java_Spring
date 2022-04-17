@@ -89,3 +89,22 @@
             <artifactId>spring-boot-starter-data-jpa</artifactId>
         </dependency>
 ```
+### Aplication Properties
+``` xml
+# MySQL Access
+# ** Create the schema in mysql ** 
+spring.datasource.url=jdbc:mysql://localhost:3306/spring_schema
+# Your MySQL Username
+spring.datasource.username=root
+# Your MySql Password
+spring.datasource.password=admin
+# Your Local Time Zone
+spring.jackson.time-zone=GMT-5
+# Spring JPA
+spring.jpa.hibernate.ddl-auto=update
+# .JSP & Folder
+spring.mvc.view.suffix = .jsp
+spring.mvc.view.prefix = /WEB-INF/
+# Hidden Method (PUT & DELETE)
+spring.mvc.hiddenmethod.filter.enabled=true
+```
