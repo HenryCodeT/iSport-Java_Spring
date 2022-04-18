@@ -109,3 +109,41 @@ spring.mvc.view.prefix = /WEB-INF/
 # Hidden Method (PUT & DELETE)
 spring.mvc.hiddenmethod.filter.enabled=true
 ```
+### PASOS PARA HACER EL DEPLOY EN HEROKU
+* Comentar o eliminar la dependencia MYSQL y agregar la depnedencia Posrtgresql 
+``` xml
+<!-- DEPENDENCIES FOR INTEGRATING SQL DATABASE AND USING JPA -->
+        <!-- <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <scope>runtime</scope>
+        </dependency> -->
+<!-- POSTGRESQL TO DEPLOY ON HEROKU -->
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <scope>runtime</scope>
+        </dependency>
+```
+* Comentar o eliminar algunas propiedades de nuestro archivo aplication.properties
+``` properties
+# //// MySQL Access /////////////////////////////////////////////
+# ** Create the schema in mysql **
+# spring.datasource.url=jdbc:mysql://localhost:3306/spring_schema
+# ** Your MySQL Username **
+# spring.datasource.username=root
+# ** Your MySql Password **
+# spring.datasource.password=admin
+# ** Your Local Time Zone **
+# spring.jackson.time-zone=GMT-5
+# //// POSTGRESQL ACCESS IN HEROKU ////////////////////////////////
+spring.jpa.properties.jdbc.lob.non_contextual_creation = true
+# Spring JPA
+spring.jpa.hibernate.ddl-auto=update
+# .JSP & Folder
+spring.mvc.view.suffix = .jsp
+spring.mvc.view.prefix = /WEB-INF/
+# Hidden Method (PUT & DELETE)
+spring.mvc.hiddenmethod.filter.enabled=true
+```
+
