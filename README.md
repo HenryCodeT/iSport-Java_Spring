@@ -17,7 +17,7 @@
 * (1) El usuario puede participar de un evento y agregar mensajes en los eventos en el que participa. 
 * (1) Uso del framework de Spring
 * (1) El usuario puede [editar] su perfil o datos publicados
-* (1) El usuario puede [eliminar] su perfil o los datos publicados
+* (1) El usuario puede [eliminar] los datos publicados
 * (1) La aplicación incluye rutas protegidas (el usuario debe iniciar sesión para ver el contenido)
 * (1) Los datos creados deben son validados (los eventos no pueden ser del pasado, los correos no pueden ser duplicados)
 * (1) La aplicación es responsiva (Bootstrap)
