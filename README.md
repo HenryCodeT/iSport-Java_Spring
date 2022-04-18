@@ -10,6 +10,20 @@
 * Bootstrap
 * MySQL
 * Bcrypt
+### Caracteristicas del proyecto
+* (1) Login y Registro con validaciones
+* (1) El usuario puede [crear] eventos en la base de datos
+* (1) El usuario puede [leer] o ver eventos recuperados de la base de datos
+* (1) El usuario puede participar de un evento y agregar mensajes en los eventos en el que participa. 
+* (1) Uso del framework de Spring
+* (1) El usuario puede [editar] su perfil o datos publicados
+* (1) El usuario puede [eliminar] su perfil o los datos publicados
+* (1) La aplicación incluye rutas protegidas (el usuario debe iniciar sesión para ver el contenido)
+* (1) Los datos creados deben son validados (los eventos no pueden ser del pasado, los correos no pueden ser duplicados)
+* (1) La aplicación es responsiva (Bootstrap)
+* (1) La aplicación cuenta con contenido estático responsiva (CSS, imágenes, JS)
+* (1) La aplicación se encuentra en producción (En Heroku)
+* (1) La aplicación puede es Java/Spring o un Cliente + Servidor
 ### Esctructura de la base de datos 
 ##### Modelo visual del esquema, el cual se genera automáticamente una vez creada el esquema en la base de datos y los modelos en nuestra aplicación
 ![alt ERD_diagram](https://github.com/HenryCodeT/iSport-Java_Spring/blob/main/assets/diagrama_ERD_SportLand.png)
